@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: caller-migrations
+  namespace: fastapi-project
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      containers:
+        - name: caller-migration-container
+          image: rafiki86/caller:latest
+          command: ['alembic', 'upgrade', 'head']
+          envFrom:
+            - secretRef:
+                name: caller-migration-secret
+      initContainers:
+        - name: init-postgres-caller-service
+          image: postgres:10.17
+          command: [ 'sh', '-c',
+              'until pg_isready -h postgres-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local -p 5432;
+          do echo waiting for database; sleep 2; done;' ]
+      restartPolicy: OnFailure
+  backoffLimit: 15

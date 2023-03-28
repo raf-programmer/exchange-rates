@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<tabela_kursow typ="A" uid="23a058">
+   <numer_tabeli>058/A/NBP/2023</numer_tabeli>
+   <data_publikacji>2023-03-23</data_publikacji>
+   <pozycja>
+      <nazwa_waluty>bat (Tajlandia)</nazwa_waluty>
+      <przelicznik>1</przelicznik>
+      <kod_waluty>THB</kod_waluty>
+      <kurs_sredni>0,1262</kurs_sredni>
+   </pozycja>
+   <pozycja>
+      <nazwa_waluty>forint (Wêgry)</nazwa_waluty>
+      <przelicznik>100</przelicznik>
+      <kod_waluty>HUF</kod_waluty>
+      <kurs_sredni>1,2132</kurs_sredni>
+   </pozycja>
+   <pozycja>
+      <nazwa_waluty>rand (Republika Po³udniowej Afryki)</nazwa_waluty>
+      <przelicznik>1</przelicznik>
+      <kod_waluty>ZAR</kod_waluty>
+      <kurs_sredni>0,2375</kurs_sredni>
+   </pozycja>
+</tabela_kursow>

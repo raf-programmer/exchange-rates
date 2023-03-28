@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: exchange-rates-cron
+  namespace: fastapi-project
+spec:
+  schedule: "0 6,18 * * *"
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 10
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: exchange-rates-cron
+              image: rafiki86/exchange_rates:latest
+              command: ["curl"]
+              args: ["-X", "POST", "http://exchange-rates-service:5000/exchange_rates/save_current", "-H", "accept: application/json"]
+          restartPolicy: OnFailure
